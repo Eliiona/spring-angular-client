@@ -1,0 +1,26 @@
+<div class="card my-5">
+  <div class="card-body">
+    <h4 id="status">Shopping list has {{itemCount}} items, {{itemsLeft}} left to buy.</h4>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Name</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ item.type }}</td>
+        <td><a class="item-bought-link" (click)="updateItem(item)"><del *ngIf="item.bought">{{ item.name }}</del>
+          <span *ngIf="!item.bought">{{ item.name }}</span></a>
+        </td>
+        <td><button class="btn btn-primary" (click)="updateItem(item)"><span *ngIf="item.bought">Not </span>Bought</button>
+          <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="text-center"><button (click)="clearList()" class="btn btn-danger" id="clear-list">Clear List</button></div>
+  </div>
+</div>
+
